@@ -30,6 +30,7 @@ def call_history(method: Callable) -> Callable:
         return output
     return wrapper
 
+
 def replay(fn: Callable):
     '''display the history of calls of a particular function.'''
     r = redis.Redis()
@@ -68,7 +69,7 @@ class Cache:
         rkey = str(uuid4())
         self._redis.set(rkey, data)
         return rkey
-    
+
     def get(self, key: str,
             fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
         '''convert the data back to the desired format'''
